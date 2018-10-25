@@ -1,0 +1,40 @@
+import obreros.*
+import obra.*
+describe "group of tests" {
+var obra = new Obra( ladrillos = 1000 , canio = 400 , fosforos = 8000 , arandelas = 500 , cable = 1000 , cinta = 60 )
+var ass = new Plomeros()
+var asd = new Albanil()
+var ag = new Electricistas()
+var fg = new Gasistas()
+
+	test "testPlomero" {
+		ass.consume(obra)
+		assert.equals(390,obra.canio())
+		assert.equals(470, obra.arandelas())
+	}
+	test "testAlbanil" {
+		asd.consume(obra)
+		assert.equals(900, obra.ladrillos())	
+	}
+	
+	test "testElectricistas"{
+		ag.consume(obra)
+		assert.equals(996, obra.cable())
+		assert.equals(59, obra.cinta())
+	}
+	test "testGasista" {
+		fg.consume(obra)
+		assert.equals(397,obra.canio())  
+		assert.equals(7980, obra.fosforos())
+	}
+	test "testJornada" {
+		obra.registrarJornada()
+		assert.equals(387,obra.canio())
+		assert.equals(470, obra.arandelas())
+		assert.equals(900, obra.ladrillos())	
+		assert.equals(996, obra.cable())
+		assert.equals(59, obra.cinta())
+		assert.equals(7980, obra.fosforos())
+	}
+	
+} 
